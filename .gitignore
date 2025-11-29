@@ -28,5 +28,11 @@ go.work.sum
 .env
 
 # Editor/IDE
-# .idea/
-# .vscode/
+.idea/
+.vscode/
+
+# Advent of code puzzle input
+input.txt
+input.go
+input.md
+input.csv
