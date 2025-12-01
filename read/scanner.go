@@ -7,7 +7,7 @@ import (
 	"iter"
 )
 
-func scan(r io.Reader, f bufio.SplitFunc) iter.Seq2[int, string] {
+func Scan(r io.Reader, f bufio.SplitFunc) iter.Seq2[int, string] {
 	scanner := bufio.NewScanner(r)
 	scanner.Split(f)
 	return func(yield func(int, string) bool) {
