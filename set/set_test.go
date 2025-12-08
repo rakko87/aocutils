@@ -16,8 +16,8 @@ func Example_newSet1() {
 	fmt.Printf("%#v\n", newSet[float64]())
 	fmt.Printf("%#v\n", newSet[string]())
 	// Output:
-	//main.Set[float64]{}
-	// main.Set[string]{}
+	//set.Set[float64]{}
+	// set.Set[string]{}
 }
 
 func Example_intersection() {
@@ -30,6 +30,17 @@ func Example_intersection() {
 	fmt.Println(Intersection(l, r))
 	// Output:
 	// map[in both:{}]
+}
+
+func Example_pop() {
+	m := make(Set[int])
+	m.Add(1)
+	m.Add(2)
+	m.Add(3)
+	got := m.Pop()
+	fmt.Printf("got %T. Remaining length is %d\n", got, len(m))
+	// Output:
+	// got int. Remaining length is 2
 }
 
 func Example() {

@@ -32,6 +32,16 @@ func (m Set[E]) Remove(e E) (success bool) {
 	return !ok
 }
 
+func (m Set[E]) Pop() E {
+	var item E
+	for item := range m {
+		if m.Remove(item) {
+			break
+		}
+	}
+	return item
+}
+
 func (m Set[E]) Keys() []E {
 	return slices.Collect[E](maps.Keys(m))
 }
