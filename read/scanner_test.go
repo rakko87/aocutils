@@ -30,3 +30,22 @@ func Example_scan() {
 	// 0 1
 	// 1 2
 }
+
+func Example_consumeSeq2() {
+	input := strings.NewReader("1\n2")
+	it := Scan(input, bufio.ScanLines)
+	consumeSeq2(it, 1)
+	for i, line := range it {
+		fmt.Println(i, line)
+	}
+	// Output:
+	// 0 2
+}
+
+func Example_string2strings() {
+	got := string2strings("abcdefgh")
+	fmt.Println(got)
+	// Output:
+	// [a b c d e f g h]
+
+}

@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io"
 	"iter"
+	"unicode/utf8"
 )
 
 func Scan(r io.Reader, f bufio.SplitFunc) iter.Seq2[int, string] {
@@ -21,4 +22,22 @@ func Scan(r io.Reader, f bufio.SplitFunc) iter.Seq2[int, string] {
 			}
 		}
 	}
+}
+
+// Consume n items from iterator, discarding the results
+func consumeSeq2[K any, V any](it iter.Seq2[K, V], n int) {
+	for range it {
+		n--
+		if n <= 0 {
+			return
+		}
+	}
+}
+
+func string2strings(s string) []string {
+	out := make([]string, utf8.RuneCountInString(s))
+	for i, c := range s {
+		out[i] = string(c)
+	}
+	return out
 }
