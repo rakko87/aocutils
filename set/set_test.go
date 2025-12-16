@@ -16,8 +16,8 @@ func Example_newSet1() {
 	fmt.Printf("%#v\n", newSet[float64]())
 	fmt.Printf("%#v\n", newSet[string]())
 	// Output:
-	//main.Set[float64]{}
-	// main.Set[string]{}
+	// set.Set[float64]{}
+	// set.Set[string]{}
 }
 
 func Example_intersection() {

@@ -9,12 +9,16 @@ import (
 	"slices"
 )
 
-// semaphore. "Something exist"
-type unary struct{}
-
 // 2025 november, practice on generics
 // Set is just a map where we ignore the values and only care about the keys.
 type Set[E comparable] map[E]unary
+
+// semaphore. "Something exist"
+type unary struct{}
+
+func newSet[E comparable]() Set[E] {
+	return make(Set[E])
+}
 
 // tranlations of set methods to map functionality
 func (m Set[E]) Add(e E) {
@@ -33,16 +37,23 @@ func (m Set[E]) Remove(e E) (success bool) {
 }
 
 func (m Set[E]) Keys() []E {
-	return slices.Collect[E](maps.Keys(m))
+	return slices.Collect(maps.Keys(m))
 }
 
 func (m Set[E]) Union(n Set[E]) (union Set[E]) {
 	return Union(m, n)
 }
 
-func newSet[E comparable]() Set[E] {
-	return make(Set[E])
-}
+// func (m Set[E]) String() string {
+// 	s := make([]string, len(m))
+// 	s[0] = fmt.Sprintf("%T", m)
+// 	i := 1
+// 	for k := range m {
+// 		s[i] = fmt.Sprintf("%v", k)
+// 		i++
+// 	}
+// 	return strings.Join(s, " ")
+// }
 
 func Union[E comparable](m, n Set[E]) (union Set[E]) {
 	union = maps.Clone(m)
