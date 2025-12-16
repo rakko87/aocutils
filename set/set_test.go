@@ -16,7 +16,7 @@ func Example_newSet1() {
 	fmt.Printf("%#v\n", newSet[float64]())
 	fmt.Printf("%#v\n", newSet[string]())
 	// Output:
-	//set.Set[float64]{}
+	// set.Set[float64]{}
 	// set.Set[string]{}
 }
 
